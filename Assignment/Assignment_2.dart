@@ -5,41 +5,60 @@ abstract class Animal {
   
   String makeSound();
   
-  String getName() {
-    return _name;
-  }
+  String get name => _name;
 }
 
 class Lion extends Animal {
-  double maneSize;
+  double _maneSize;
   
-  Lion(String name, this.maneSize) : super(name);
+  Lion(String name, double maneSize) 
+      : _maneSize = maneSize,
+        super(name);
   
   @override
   String makeSound() {
     return "Roar!";
   }
+  
+  double get maneSize => _maneSize;
+  set maneSize(double value) {
+    _maneSize = value;
+  }
 }
 
 class Elephant extends Animal {
-  double trunkLength;
+  double _trunkLength;
   
-  Elephant(String name, this.trunkLength) : super(name);
+  Elephant(String name, double trunkLength) 
+      : _trunkLength = trunkLength,
+        super(name);
   
   @override
   String makeSound() {
     return "Trumpet!";
   }
+  
+  double get trunkLength => _trunkLength;
+  set trunkLength(double value) {
+    _trunkLength = value;
+  }
 }
 
 class Parrot extends Animal {
-  int vocabularySize;
+  int _vocabularySize;
   
-  Parrot(String name, this.vocabularySize) : super(name);
+  Parrot(String name, int vocabularySize) 
+      : _vocabularySize = vocabularySize,
+        super(name);
   
   @override
   String makeSound() {
     return "Squawk!";
+  }
+  
+  int get vocabularySize => _vocabularySize;
+  set vocabularySize(int value) {
+    _vocabularySize = value;
   }
 }
 
@@ -54,7 +73,7 @@ void main() {
   print("");
   
   for (var animal in animals) {
-    print("Name: ${animal.getName()}");
+    print("Name: ${animal.name}");
     
     if (animal is Lion) {
       print("Mane Size: ${animal.maneSize} inches");
